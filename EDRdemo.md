@@ -10,7 +10,6 @@ Demonstrate the end-to-end analyst workflow in Microsoft 365 Defender for Endpoi
 ---
 
 ## 🕒 Timeline Overview
-
 | Segment | Duration | Focus |
 |----------|-----------|-------|
 | 1 | 5 min | Device Overview (EDR context) |
@@ -22,14 +21,15 @@ Demonstrate the end-to-end analyst workflow in Microsoft 365 Defender for Endpoi
 
 ---
 
-## 🔹 Segment 1 — Device Overview & Onboarding Context (≈5 min)
+<details>
+<summary><h2>🔹 Segment 1 — Device Overview & Onboarding Context (≈5 min)</h2></summary>
 
 **Objective:** Show what EDR “sees” before alerts form.
 
 ### 🧩 Steps
 1. Open **Microsoft 365 Defender → Devices** → select:
    - One **workgroup (non-Entra joined)** device
-   - One **Entra-joined (EIDJ)** device
+   - One **Entra-joined (EIDJ)** device  
 2. Open the **Overview** tab for each.
 
 ### 💬 Narration
@@ -45,16 +45,18 @@ Demonstrate the end-to-end analyst workflow in Microsoft 365 Defender for Endpoi
 
 ### 🧭 Transition
 > “Now that we’ve seen a single device’s telemetry, let’s explore how Defender automatically correlates that data into incidents.”
+</details>
 
 ---
 
-## 🔹 Segment 2 — Incidents Queue — The Analyst Starting Line (≈10 min)
+<details>
+<summary><h2>🔹 Segment 2 — Incidents Queue — The Analyst Starting Line (≈10 min)</h2></summary>
 
 **Objective:** Show how multi-signal incidents form and why correlation matters.
 
 ### 🧩 Steps
 1. Navigate to **Investigation & Response → Incidents & Alerts → Incidents**.  
-2. View the columns:
+2. View columns:
    - *Incident Name, Severity, Investigation State, Categories, Impacted Assets, Service Source, Detection Source, Product Names*
 3. Apply filter → `Service source = Endpoint`.
 
@@ -68,10 +70,12 @@ Demonstrate the end-to-end analyst workflow in Microsoft 365 Defender for Endpoi
 - Open it.
 
 > “This one combines persistence, defense evasion, and ransomware execution — all grouped automatically. Let’s watch how Defender tells that story.”
+</details>
 
 ---
 
-## 🔹 Segment 3 — Investigate the Multi-Stage Ransomware Incident (≈10 min)
+<details>
+<summary><h2>🔹 Segment 3 — Investigate the Multi-Stage Ransomware Incident (≈10 min)</h2></summary>
 
 **Objective:** Walk through a correlated ransomware chain — persistence, defense evasion, and execution.
 
