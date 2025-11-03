@@ -5,11 +5,12 @@
 ## 🎯 Session Goal
 Demonstrate the end-to-end analyst workflow in Microsoft 365 Defender for Endpoint — from data collection → incident correlation → investigation → response → custom detection.
 
-> Slides already presented — this session is **fully live** (portal-driven storytelling).
+> Slides have already been presented — this session is **fully live** and portal-driven.
 
 ---
 
 ## 🕒 Timeline Overview
+
 | Segment | Duration | Focus |
 |----------|-----------|-------|
 | 1 | 5 min | Device Overview (EDR context) |
@@ -23,98 +24,115 @@ Demonstrate the end-to-end analyst workflow in Microsoft 365 Defender for Endpoi
 
 ## 🔹 Segment 1 — Device Overview & Onboarding Context (≈5 min)
 
-**Objective:** show what EDR “sees” before alerts form.
+**Objective:** Show what EDR “sees” before alerts form.
 
-**Do live**
-1. Open **Microsoft 365 Defender → Devices** → pick two examples:  
-   - A **workgroup** (non-Entra joined)  
-   - An **Entra-joined (EIDJ)** device  
-2. Open each **Overview** tab.
+### 🧩 Steps
+1. Open **Microsoft 365 Defender → Devices** → select:
+   - One **workgroup (non-Entra joined)** device
+   - One **Entra-joined (EIDJ)** device
+2. Open the **Overview** tab for each.
 
-**Say**
-> “Every onboarded endpoint feeds continuous telemetry — process starts, network connects, file writes.  
-> Notice how the Entra-joined device carries richer identity and compliance context.  
-> That identity linkage becomes important once incidents are correlated.”
+### 💬 Narration
+> “Every onboarded endpoint continuously sends telemetry — process starts, network connects, and file writes.  
+> Notice how the Entra-joined device has richer identity and compliance context.  
+> That identity linkage becomes critical once incidents are correlated.”
 
-**Highlight**
+### 🔍 Callouts
 - Device tags  
 - Risk level  
 - Onboarding status  
 - Defender version / Last seen  
 
-**Transition**
-> “Now let’s move from a single device’s telemetry to how Defender automatically correlates that data into incidents.”
+### 🧭 Transition
+> “Now that we’ve seen a single device’s telemetry, let’s explore how Defender automatically correlates that data into incidents.”
 
 ---
 
 ## 🔹 Segment 2 — Incidents Queue — The Analyst Starting Line (≈10 min)
 
-**Objective:** show how signals from multiple Defender products combine into one incident.
+**Objective:** Show how multi-signal incidents form and why correlation matters.
 
-**Do live**
+### 🧩 Steps
 1. Navigate to **Investigation & Response → Incidents & Alerts → Incidents**.  
-2. You’ll see something like your captured screen — columns for  
-   *Incident Name, Severity, Investigation State, Categories, Impacted Assets, Service Source, Detection Source, Product Names.*
+2. View the columns:
+   - *Incident Name, Severity, Investigation State, Categories, Impacted Assets, Service Source, Detection Source, Product Names*
+3. Apply filter → `Service source = Endpoint`.
 
-**Say**
+### 💬 Narration
 > “This is where analysts live day-to-day.  
-> Each line represents correlated alerts from Endpoint, Identity, Office, and even Sentinel — unified XDR in action.”
+> Each line represents one or more correlated alerts — across Endpoint, Identity, Office, and Sentinel.  
+> This unified view is Microsoft’s XDR story in action.”
 
-**Live steps**
-- Filter → `Service source = Endpoint`  
+### 🧩 Demo Focus
 - Highlight **‘Multi-stage incident involving Persistence & Defense evasion including Ransomware’**  
 - Open it.
 
-**Say**
-> “This one combines persistence attempts, defense evasion, and ransomware execution — grouped automatically.  
-> Let’s watch how Defender builds that storyline.”
+> “This one combines persistence, defense evasion, and ransomware execution — all grouped automatically. Let’s watch how Defender tells that story.”
 
 ---
 
 ## 🔹 Segment 3 — Investigate the Multi-Stage Ransomware Incident (≈10 min)
 
-**Objective:** walk through correlated ransomware chain — persistence, defense evasion, and execution.
+**Objective:** Walk through a correlated ransomware chain — persistence, defense evasion, and execution.
 
 ### 🧭 Setup
 > “We’ll dive into a multi-stage ransomware incident.  
-> Defender correlated PowerShell activity, tampering, and encryption into one cohesive case.”
+> Defender correlated PowerShell abuse, profile tampering, and encryption events into one cohesive case.”
 
-### 🪟 1. Open Incident
+---
+
+### 🪟 Step 1: Open the Incident
 1. Filter: `Status = New, In progress` and `Service source = Endpoint`.  
 2. Open **Incident ID 1675 — ‘Multi-stage incident involving Persistence & Defense evasion including Ransomware on one endpoint.’**
 
-> “Defender auto-classified this as *Ransomware* and grouped all supporting alerts.”
+> “Defender automatically classified this as *Ransomware* and grouped all supporting alerts.”
 
-### 📊 2. Attack Story
-1. Click **Attack story**.  
-2. Narrate nodes: *Initial Access → Persistence → Defense Evasion → Execution → Encryption.*
+---
 
-> “Each node maps to MITRE ATT&CK phases and shows temporal correlation.”
+### 📊 Step 2: Review the Attack Story
+1. Click the **Attack Story** tab.  
+2. Narrate the nodes:
+   - *Initial Access → Persistence → Defense Evasion → Execution → Encryption.*
 
-### 🧩 3. Related Alerts
-Open **Related alerts** and highlight:
+> “Each node maps to a MITRE ATT&CK phase and shows chronological correlation.”
+
+---
+
+### 🧩 Step 3: Explore Related Alerts
+Open **Related Alerts** and highlight:
 - *Ransomware-linked threat actor detected* (High)  
 - *Possible PowerShell profile tampering* (Medium)  
 - *Unexpected behavior observed by a process ran with no command line arguments* (Medium)
 
-> “High-confidence ransomware behavior surrounded by supporting signals — the full context of compromise.”
+> “This is layered evidence — high-confidence ransomware behavior with surrounding context that tells the full compromise story.”
 
-### 🔍 4. Deep-Dive into Alert
-1. Open **Possible PowerShell profile tampering.**  
-2. Expand **Process tree**, view **Command line**, note MITRE mapping.
+---
 
-> “Defender mapped this to T1546 (Event-Triggered Execution) and tied it to this endpoint automatically.”
+### 🔍 Step 4: Deep-Dive into One Alert
+1. Open **Possible PowerShell profile tampering**.  
+2. In the **Alert Story**:
+   - Expand **Process Tree**  
+   - Review **Command Line**  
+   - Note the MITRE mapping (T1546 – Event-Triggered Execution)
 
-### 🧱 5. Pivot to Device
-1. Click device entity (*entraassessment*).  
-2. On device page → **Timeline** → filter to incident timeframe.  
-3. Show PowerShell start, dropped file, encryption events. If Timeline missing, use Alerts tab.
+> “Defender extracted the full PowerShell command, mapped it to MITRE, and tied it back to the same endpoint.”
 
-> “This gives a full chronological view — before, during, and after encryption.”
+---
 
-### ⚙️ 6. Live Response (optional)
-1. Click **Initiate Live Response**.  
-2. Run:
+### 🧱 Step 5: Pivot to the Device
+1. Click the device entity (*entraassessment*).  
+2. On the Device page:
+   - Open **Timeline** (or Alerts tab if Timeline is hidden).  
+   - Filter to the same time window.  
+   - Show PowerShell start, dropped file, encryption process.
+
+> “This is the forensic backbone — full event chronology before, during, and after encryption.”
+
+---
+
+### ⚙️ Step 6: Optional Live Response
+1. Click **Initiate Live Response** on the top bar.  
+2. Once connected, run:
    ```powershell
    tasklist
    dir C:\Users
