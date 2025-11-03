@@ -220,7 +220,7 @@ Back to **Incident summary** and call out:
 
    ```kql
    DeviceProcessEvents
-   | where ProcessCommandLine has_any ("Invoke-Expression", "IEX", "WebClient", "DownloadString")
+   | where ProcessCommandLine has_any ("Invoke-WebRequest")
    | extend Account = tostring(InitiatingProcessAccountName)
    | project Timestamp, DeviceName, FileName, ProcessCommandLine, Account
    ```
